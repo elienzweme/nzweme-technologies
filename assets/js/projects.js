@@ -601,7 +601,6 @@ const projects = [
     }
 ];
 
-
 /* =========================================================
    2. DOM REFERENCES
    ========================================================= */
@@ -717,7 +716,6 @@ function getFilteredProjects() {
     });
 }
 
-
 /* =========================================================
    6. PROJECT CARD COMPONENTS
    ========================================================= */
@@ -765,6 +763,12 @@ function createProjectButtons(project) {
     }
 
     if (project.liveUrl) {
+
+        const buttonText =
+            project.id === "cysa-practice-exam-app"
+                ? "Take the Exam"
+                : "View Demo";
+
         buttons.push(`
             <a
                 class="button button-secondary button-small"
@@ -772,7 +776,7 @@ function createProjectButtons(project) {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                View Demo
+                ${buttonText}
             </a>
         `);
     }
@@ -803,6 +807,7 @@ function createProjectButtons(project) {
 }
 
 function createProjectCard(project) {
+
     const statusClass =
         project.status === "Completed"
             ? "access-free"
@@ -822,7 +827,9 @@ function createProjectCard(project) {
             </div>
 
             <div class="project-card-content">
+
                 <div class="learning-meta">
+
                     <span>
                         ${escapeHtml(project.category)}
                     </span>
@@ -830,6 +837,7 @@ function createProjectCard(project) {
                     <span class="${statusClass}">
                         ${escapeHtml(project.status)}
                     </span>
+
                 </div>
 
                 <h3>
@@ -847,6 +855,7 @@ function createProjectCard(project) {
                 </div>
 
                 <div class="resume-recommended">
+
                     <strong>
                         Key project outcomes
                     </strong>
@@ -856,16 +865,20 @@ function createProjectCard(project) {
                             project.highlights
                         )}
                     </ul>
+
                 </div>
 
                 <div class="project-card-footer">
+
                     ${createProjectButtons(project)}
+
                 </div>
+
             </div>
+
         </article>
     `;
 }
-
 
 /* =========================================================
    7. CATEGORY FILTER BUTTONS
